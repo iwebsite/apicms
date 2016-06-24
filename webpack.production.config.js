@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -11,8 +12,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/',
+    filename: 'bundle.js'
   },
   module: {
     loaders: [{
@@ -20,20 +21,32 @@ module.exports = {
       loaders: ['babel']
     },{
       test: /\.css$/,
-      loader: 'style!css'
+      loader: ExtractTextPlugin.extract("style-loader", "css-loader")
     },{
       test: /\.less$/,
-          loader: 'style!css!less'
+      loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
     },{
       test: /\.woff$/,
-          loader: 'url?limit=100000'
+      loader: 'url?limit=100000'
     },{
       test: /\.(png|jpg)$/,
-          loader: 'url?limit=25000'
+      loader: 'url?limit=25000'
     }]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({minimize: true}),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false  // remove all comments
+      },
+      compress: {
+        warnings: false
+      }
+    }),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
     new HtmlwebpackPlugin({
       template: path.resolve(ROOT_PATH, 'index.html'),
@@ -42,6 +55,7 @@ module.exports = {
       chunks: [ 'vendors'],
       //要把script插入到标签里
       inject: 'body'
-    })
+    }),
+    new ExtractTextPlugin("bundle.css")
   ]
 };
