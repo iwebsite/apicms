@@ -51,9 +51,7 @@ module.exports = {
     new HtmlwebpackPlugin({
       template: path.resolve(ROOT_PATH, 'index.html'),
       filename: 'index.html',
-      //chunks这个参数告诉插件要引用entry里面的哪几个入口
       chunks: [ 'vendors'],
-      //要把script插入到标签里
       inject: 'body'
     }),
     new ExtractTextPlugin("bundle.css")
