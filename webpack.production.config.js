@@ -49,9 +49,10 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
     new HtmlwebpackPlugin({
+      title:'apicms',
       template: path.resolve(ROOT_PATH, 'index.html'),
       filename: 'index.html',
-      chunks: [ 'vendors'],
+      chunks: ['app', 'vendors'],
       inject: 'body'
     }),
     new ExtractTextPlugin("bundle.css")

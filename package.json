@@ -3,26 +3,12 @@
   "version": "0.0.1",
   "description": "apicms",
   "main": "index.js",
-  "directories": {
-    "doc": "doc"
-  },
+  "author": "iwebsite",
+  "license": "ISC",
   "scripts": {
     "start": "webpack-dev-server --devtool eval --progress --colors --hot",
     "dist": "NODE_ENV=production webpack --config webpack.production.config.js --progress"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iwebsite/apicms.git"
-  },
-  "keywords": [
-    "apicms"
-  ],
-  "author": "iwebsite",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/iwebsite/apicms/issues"
-  },
-  "homepage": "https://github.com/iwebsite/apicms#readme",
   "devDependencies": {
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.4",
@@ -50,6 +36,6 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",
-    "request": "^2.72.0"
+    "reqwest": "^2.0.5"
   }
 }

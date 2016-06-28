@@ -2,29 +2,45 @@ var path = require('path');
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
-
+var HtmlwebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: [
-    	'webpack/hot/only-dev-server',
-    	'webpack-dev-server/client?http://localhost:8080',
-    	path.resolve(APP_PATH, 'index.js')
-    ],
+    entry: {
+		app: path.resolve(APP_PATH, 'index.js')
+	},
     output: {
         path: BUILD_PATH,
-    	filename: 'bundle.js',
-    	publicPath:'static'
+    	filename: 'bundle.js'
     },
+	devServer: {
+		historyApiFallback: true,
+		hot: true,
+		inline: true,
+		progress: true,
+		port:8080,
+		proxy:{
+			//"/api/*" :'http://localhost'//服务器地址
+			"/api/*" :'http://localhost/App/apicms'//本机地址
+		}
+	},
+	plugins: [
+		new HtmlwebpackPlugin({
+			template: path.resolve(ROOT_PATH, 'index.html'),
+			filename: 'index.html',
+			chunks: ['app'],
+			inject: 'body'
+		})
+	],
     module: {
 		loaders: [{
 			test: /\.jsx?$/,
 			loaders: ['babel']
 		},{
 			test: /\.css$/,
-			loader: 'style!css'
+			loaders: ['style', 'css']
 		},{
 			test: /\.less$/,
-      		loader: 'style!css!less'
+			loaders: ['style', 'css', 'less']
 		},{
 			test: /\.woff$/,
       		loader: 'url?limit=100000'
