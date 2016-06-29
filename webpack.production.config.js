@@ -17,8 +17,9 @@ module.exports = {
   },
   module: {
     loaders: [{
-      test: /\.jsx?$/,
-      loaders: ['babel']
+      test: /\.js$/,
+      loaders: ['babel'],
+      include: path.join(__dirname, 'src')
     },{
       test: /\.css$/,
       loader: ExtractTextPlugin.extract("style-loader", "css-loader")
