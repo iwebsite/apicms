@@ -6,8 +6,8 @@
   "author": "iwebsite",
   "license": "ISC",
   "scripts": {
-    "start": "webpack-dev-server --devtool eval --progress --colors --hot",
-    "dist": "NODE_ENV=production webpack --config webpack.production.config.js --progress"
+    "start": "export NODE_ENV=development && webpack-dev-server --profile --progress --colors --hot",
+    "dist": "export NODE_ENV=production webpack --config  --profile --progress --colors webpack.production.config.js "
   },
   "devDependencies": {
     "babel-core": "^6.9.1",
