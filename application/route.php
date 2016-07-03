@@ -15,4 +15,5 @@ return [
         'name' 	=> '\w+',
     ],
     'login'       => 'Login/login',
+    'Admin/add'       => 'api/Admin/add',
 ];

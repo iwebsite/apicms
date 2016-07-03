@@ -1,10 +1,10 @@
 <?php
 namespace app\api\controller;
-
+use think\Controller;
 /**
  * 公共控制器
  */
-class Common
+class Common extends Controller
 {
 
 	/**
@@ -50,11 +50,9 @@ class Common
 		);
 
 		$code = $auth[$action];
-
-		if (!in_array($code, $_SESSION['admin']['auth'])) {
+		if (!in_array($code, explode(',', session('userInfo.auth')))) {
 			return json(['status'=>0,'message'=>'没有操作权限!']);
 		}
-		
 	}
 
 	/**

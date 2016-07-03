@@ -6,25 +6,28 @@ use app\api\controller\Common;
  */
 class Admin extends Common
 {
+
     /**
      * [add description]
      */
     public function add(){
-    	echo 'add';
+
+        $admin = model('Admin');
+        $admin->addData(array('a'=>1));
     }
 
     /**
      * [delete description]
      */
     public function delete(){
-
+        echo 'delete';
     }
 
     /**
      * [edit description]
      */
     public function edit(){
-
+        echo 'edit';
     }
 
     /**
