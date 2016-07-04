@@ -4,11 +4,9 @@
  */
 import React, { Component } from 'react';
 
-const initializeState = {};
 class HomePage extends Component {
     constructor(props) {
         super(props);
-        this.state = initializeState
     }
 
     render() {

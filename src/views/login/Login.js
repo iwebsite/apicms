@@ -70,7 +70,7 @@ class Login extends Component {
                         />
                     </FormItem>
                     <FormItem wrapperCol={{ span: 12, offset: 7 }}>
-                        <Button type="primary" onClick={this.handleSubmit.bind(this)}>登录</Button>
+                        <Button style={{width:'100% '}} type="primary" onClick={this.handleSubmit.bind(this)}>登录</Button>
                     </FormItem>
                 </Form>
             </div>
