@@ -2,6 +2,7 @@
 namespace app\api\controller;
 /**
  * 后台管理员管理控制器
+ * [许文明 1010707582@qq.com 2016-07-5]
  */
 class Login
 {

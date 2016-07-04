@@ -3,6 +3,7 @@ namespace app\api\model;
 use think\Model;
 /**
  * 公共模型
+ * [许文明 1010707582@qq.com 2016-07-5]
  */
 class Common extends Model
 {
