@@ -3,6 +3,7 @@ namespace app\api\controller;
 use think\Controller;
 /**
  * 公共控制器
+ * [许文明 1010707582@qq.com 2016-07-5]
  */
 class Common extends Controller
 {
@@ -42,17 +43,11 @@ class Common extends Controller
 	 * @return [type] [description]
 	 */
 	protected function checkAuth(){
-		$action = request()->action();
-		$auth = array(
-			'add' 		=> 1,
-			'delete' 	=> 2,
-			'edit' 		=> 3
-		);
-
-		$code = $auth[$action];
-		if (!in_array($code, explode(',', session('userInfo.auth')))) {
+		
+		if (!in_array($_GET['auth'], explode(',', session('userInfo.auth')))) {
 			return json(['status'=>0,'message'=>'没有操作权限!']);
 		}
+		
 	}
 
 	/**

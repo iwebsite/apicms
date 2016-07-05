@@ -7,3 +7,4 @@ runtime/
 *.tmp
 *.xml
 *.log
+*.sublime-workspace
