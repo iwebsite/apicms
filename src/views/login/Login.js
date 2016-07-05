@@ -25,8 +25,8 @@ class Login extends Component {
                 url:'/login',
                 data:{username:values.username,password:values.password},
                 success:(result)=> {
-                    browserHistory.push('/admin');
                     session('userInfo',JSON.stringify(result));
+                    browserHistory.push('/admin');
                 }
             });
         });
@@ -44,35 +44,31 @@ class Login extends Component {
                 { required: true, min:6, message: '密码至少为6位' }
             ]
         });
-        const formItemLayout = {
-            labelCol: { span: 7 },
-            wrapperCol: { span: 12 }
-        };
         return (
-            <div className="login">
-                <Form horizontal form={this.props.form}>
-                    <FormItem
-                        {...formItemLayout}
-                        label="用户名"
-                        hasFeedback
-                    >
-                        <Input placeholder="请输入用户名"
-                            {...nameProps}
-                        />
-                    </FormItem>
-                    <FormItem
-                        {...formItemLayout}
-                        hasFeedback
-                        label="密码"
-                    >
-                        <Input type="password" placeholder="请输入密码"
-                            {...passwordProps}
-                        />
-                    </FormItem>
-                    <FormItem wrapperCol={{ span: 12, offset: 7 }}>
-                        <Button style={{width:'100% '}} type="primary" onClick={this.handleSubmit.bind(this)}>登录</Button>
-                    </FormItem>
-                </Form>
+            <div className="login-main">
+                <div className="login_title">login</div>
+                <div className="login">
+                    <Form horizontal form={this.props.form}>
+                        <FormItem
+                            hasFeedback
+                        >
+                            <Input placeholder="请输入用户名"
+                                {...nameProps}
+                            />
+                        </FormItem>
+                        <FormItem
+                            hasFeedback
+                        >
+                            <Input type="password" placeholder="请输入密码"
+                                {...passwordProps}
+                            />
+                        </FormItem>
+                        <FormItem >
+                            <Button style={{width:'100% '}} type="primary" onClick={this.handleSubmit.bind(this)}>登 录</Button>
+                        </FormItem>
+                    </Form>
+                </div>
+                <p>&copy; 2016</p>
             </div>
         );
     }
